@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Menu from './core/Menu';
+import  MainSearch from './components/MainSearch'
+
 function App() {
   return (
     <div>
-      <h1>Welcome</h1>
+      {/* <Menu/> */}
+      <MainSearch/>
     </div>
   );
 }

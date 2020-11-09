@@ -28,16 +28,25 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eot|svg|gif|jpg|png)(\?[\s\S]+)?$/,
-                use: 'file-loader'
-            }
+                test: /\.(ttf|eot|svg|gif|jpg|png|ico)(\?[\s\S]+)?$/,
+                use: 'file-loader',
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                  'style-loader',
+                  'css-loader',
+                  'sass-loader',
+                ],
+            },
         ]
     },
     plugins: [
         new HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: "Expeq",
-            template: './client/src/index.html'
+            template: './client/src/index.html',
+            favicon: './client/src/favicon.png'
         }),
         new NoEmitOnErrorsPlugin()
     ],

@@ -1,0 +1,60 @@
+@import './variables';
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+//  MENU STYLES START
+
+.MenuBar {
+  background-color: $ThemenDarkGreen;
+  padding-top: 1rem;
+  padding-bottom: 1em;
+
+  .Brand {
+    height: 13%;
+    width: 13%;
+  }
+
+  .Icon {
+    color: $ThemenMediumGreen;
+  }
+  
+  .Buttons {
+    background-color: $ThemeNaturalYellow !important;
+    color: $ThemenDarkGreen !important;
+    margin: 10px !important;
+    
+    &:hover {
+      background-color: $ThemenMediumGreen !important;
+      color: $ThemeNaturalYellow !important;
+    }
+  
+    &:hover .Icon{
+      color: $ThemeNaturalYellow !important;
+    }
+  }
+}
+
+//  MENU STYLES END
+
+// MAIN PAGE START
+
+.MainPage {
+  .Image {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+// MAIN PAGE END
