@@ -5,7 +5,7 @@ import  MainSearch from './components/MainSearch'
 function App() {
   return (
     <div>
-      {/* <Menu/> */}
+      <Menu/> 
       <MainSearch/>
     </div>
   );
