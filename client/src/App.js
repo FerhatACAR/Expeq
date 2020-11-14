@@ -1,13 +1,10 @@
 import React from 'react';
-import Menu from './core/Menu';
-import  MainSearch from './components/MainSearch'
+import SignUp from './views/SignUp';
+
 
 function App() {
   return (
-    <div>
-      <Menu/> 
-      <MainSearch/>
-    </div>
+    <SignUp/>
   );
 }
 

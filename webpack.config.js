@@ -17,7 +17,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js', '.jsx']
-    }, 
+    },
     module: {
         rules: [
             {
@@ -28,7 +28,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ttf|eot|svg|gif|jpg|png|ico)(\?[\s\S]+)?$/,
+                test: /\.(ttf|eot|svg|gif|jpg|png|ico|mp4)(\?[\s\S]+)?$/,
                 use: 'file-loader',
             },
             {
@@ -57,5 +57,5 @@ module.exports = {
         port: 9001,
         open: 'firefox',
         hot: true,
-      }  
+      }
 };
