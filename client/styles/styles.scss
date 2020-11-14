@@ -1,24 +1,35 @@
 @import './variables';
+@mixin Button() {
+  .Buttons {
+    background-color: $ThemeNaturalYellow !important;
+    color: $ThemenDarkGreen !important;
 
-html, body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    &:hover {
+      background-color: $ThemenMediumGreen !important;
+      color: $ThemeNaturalYellow !important;
+    }
+
+    &:hover .Icon {
+      color: $ThemeNaturalYellow !important;
+    }
   }
+}
 
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
+body,
+html {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
 
 //  MENU STYLES START
-
 .MenuBar {
   background-color: $ThemenDarkGreen;
   padding-top: 1rem;
@@ -43,21 +54,20 @@ html, body {
       color: $ThemeNaturalYellow !important;
     }
 
-    &:hover .Icon{
+    &:hover .Icon {
       color: $ThemeNaturalYellow !important;
     }
   }
 }
-
 //  MENU STYLES END
 
 // MAIN PAGE START
-
 .MainPage {
   & .Image {
     height: 100%;
     width: 100%;
   }
+
   & .DropDowns {
     display: flex;
     position: fixed;
@@ -83,18 +93,15 @@ html, body {
         color: $ThemeNaturalYellow !important;
       }
 
-      &:hover .Icon{
+      &:hover .Icon {
         color: $ThemeNaturalYellow !important;
       }
     }
-
   }
 }
-
 // MAIN PAGE END
 
 // SELECT STYLES START
-
 .DropDown {
   .FormControl {
     margin: 2rem;
@@ -102,5 +109,198 @@ html, body {
     width: 12rem;
   }
 }
-
 // SELECT STYLES END
+
+// SELECT STYLES START
+.LoginForm {
+  height: 100vh;
+
+  & .SubmitButton {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: $ThemenMediumGreen;
+    color: $White;
+  }
+
+  & .Avatar {
+    margin: 1rem;
+    background-color: $ThemeNaturalYellow;
+  }
+
+  & .Image {
+    background-image: url("./../src/assets/images/Typing-10839.gif");
+    background-repeat: no-repeat;
+    background-color: $ThemeNaturalYellow;
+    background-size: cover;
+    background-position: center;
+  }
+
+  & .Paper {
+    margin: 8rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & .Form {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+// SELECT STYLES END
+
+// CARD STYLES START
+
+.Card {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-bottom: 0.5em solid $ThemenDarkGreen;
+  & .FirstRow {
+    display: flex;
+    & .AdressArea {
+      border-left: 0.7em solid $ThemenDarkGreen;
+      border-radius: 50px 0px 0px 0px;
+    }
+    & .Details {
+      display: flex;
+      flex-direction: column;
+      & .Content {
+        flex: 1;
+        font-size: 15px;
+        & .Name {
+          font-size: 20px;
+        }
+      }
+      .Icon {
+        color: $ThemenMediumGreen;
+      }
+      .Buttons {
+        background-color: $ThemeNaturalYellow !important;
+        color: $ThemenDarkGreen !important;
+
+        &:hover {
+          background-color: $ThemenMediumGreen !important;
+          color: $ThemeNaturalYellow !important;
+        }
+
+        &:hover .Icon {
+          color: $ThemeNaturalYellow !important;
+        }
+      }
+      .CallButton {
+        float: right;
+        min-width: 50%
+      }
+    }
+    & .Cover {
+      width: 20%;// resim için ayarlama yapılacak
+    }
+  }
+  & .SecondRow {
+    display: flex;
+    & .Details {
+      display: flex;
+      flex-direction: column;
+      & .Content {
+        flex: 1 0;
+        font-size: 15px;
+      }
+      & .Views {
+        display: flex !important;
+        float: right !important;
+        font-size: 12px !important;
+        color: $Gray !important;
+      }
+    }
+  }
+}
+
+.SquareUserCard {
+  & .Cover {
+    height: 20%;// resim için ayarlama yapılacak
+  }
+  & .CardActions {
+    @include Button();
+  }
+}
+
+// CARD STYLES END
+
+// SEARCHRESULT STYLES START
+
+.SearchResult {
+  padding-left: 50px;
+  padding-right: 20px;
+  & .SideBar {
+    display: flex;
+    flex-direction: column;
+    & .Search {
+      @include Button();
+      & .SearchButton {
+        min-width: 40%;
+      }
+    }
+  }
+  & .CardList {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
+// SEARCHRESULT STYLES END
+
+// USERTABS STYLES START
+
+.UserTabs {
+  height: 100vh;
+  overflow-y: scroll;
+  & .Tab {
+    background-color: $ThemenMediumGreen;
+  }
+}
+
+.Summary {
+  & .Row {
+    display: flex;
+    flex-direction: row;
+    word-wrap: break-word;
+    .Icon {
+      color: $ThemenMediumGreen;
+    }
+    .Buttons {
+      background-color: $ThemeNaturalYellow !important;
+      color: $ThemenDarkGreen !important;
+
+      &:hover {
+        background-color: $ThemenMediumGreen !important;
+        color: $ThemeNaturalYellow !important;
+      }
+
+      &:hover .Icon {
+        color: $ThemeNaturalYellow !important;
+      }
+    }
+  }
+}
+
+// USERTABS STYLES END
+
+// SIGNUP FORM STYLE STARTS
+.SignUpForm {
+  & .Paper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .Form {
+      width: 100%;
+      @include Button();
+      & .Submit {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+// SIGNUP FORM STYLE ENDS
