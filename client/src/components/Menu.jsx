@@ -1,5 +1,5 @@
 import React from 'react';
-import { fade, makeStyles, withStyles } from '@material-ui/core/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import BrandLogo from '../assets/logo/logo-brand.png';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -143,23 +144,27 @@ export default function MenuBar() {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar className="MenuBar">
-          <img className="Brand" src={BrandLogo} alt="logo"/>
+          <img className="Brand" src={BrandLogo} alt="logo" />
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <Button
-            variant="contained"
-            className="Buttons"
-            endIcon={<AccountCircle className="Icon" />}
-           >
-            Giriş Yap
+            <Link to={"/LoginPage"}>
+              <Button
+                variant="contained"
+                className="Buttons"
+                endIcon={<AccountCircle className="Icon" />}
+              >
+                Giriş Yap
            </Button>
-           <Button
-            variant="contained"
-            className="Buttons"
-            endIcon={<AccountCircle className="Icon" />}
-           >
-            Kayıt Ol
+            </Link>
+            <Link to={"/SignUp"}>
+              <Button
+                variant="contained"
+                className="Buttons"
+                endIcon={<AccountCircle className="Icon" />}
+              >
+                Kayıt Ol
            </Button>
+            </Link>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
