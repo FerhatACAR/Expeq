@@ -1,10 +1,13 @@
 import React from 'react';
-import SignUp from './views/SignUp';
+import {BrowserRouter} from 'react-router-dom'
+import MainRouter from './MainRouter';
 
 
 function App() {
   return (
-    <SignUp/>
+    <BrowserRouter>
+      <MainRouter/>
+    </BrowserRouter>
   );
 }
 
