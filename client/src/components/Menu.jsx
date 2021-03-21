@@ -144,7 +144,9 @@ export default function MenuBar() {
     <div className={classes.grow}>
       <AppBar position="fixed">
         <Toolbar className="MenuBar">
-          <img className="Brand" src={BrandLogo} alt="logo" />
+          <Link to={"/"}>
+            <img className="Brand" src={BrandLogo} alt="logo" />
+          </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Link to={"/LoginPage"}>
