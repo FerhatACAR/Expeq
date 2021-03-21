@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import MainImage from '../assets/images/notebook-1280538_1920.jpg';
 import { CitySelect, ProfessionSelect } from './DropDowns'
 
-
+ 
 export default function MainSearch(props) {
 
   return (
@@ -26,7 +26,7 @@ export default function MainSearch(props) {
               className="Buttons"
               endIcon={<SearchIcon className="Icon" />}
             >
-              Giriş Yap
+              Ara
              </Button>
           </Link>
         </div>

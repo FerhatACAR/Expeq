@@ -87,6 +87,7 @@ code {
       background-color: $ThemenDarkGreen !important;
       color: $ThemeNaturalYellow !important;
       margin: 10px !important;
+      top: 30px;
 
       &:hover {
         background-color: $ThemenMediumGreen !important;
@@ -242,6 +243,7 @@ code {
     }
   }
   & .CardList {
+    margin-top: 125px;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -304,3 +306,11 @@ code {
   }
 }
 // SIGNUP FORM STYLE ENDS
+
+// USER PROFİLE STYLES STARTS
+
+.UserProfile {
+  margin-top: 150px;
+}
+
+// USER PROFILE STYLES ENDS
