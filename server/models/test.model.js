@@ -6,4 +6,4 @@ var TestSchema = new mongoose.Schema({
   age: Number
 })
 
-export default mongoose.model("Test", TestSchema, "TestCollection")
+export default mongoose.model('Test', TestSchema, 'TestCollection')
