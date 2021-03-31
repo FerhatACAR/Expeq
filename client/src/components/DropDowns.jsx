@@ -6,79 +6,108 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 
- function CitySelect() {
-  const [state, setState] = React.useState({
-    age: '',
-    name: 'hai',
-  });
+class CitySelect extends React.Component {
+  constructor(props) {
+       super(props);
+       this.state = {
+           keys: '',
+           cities: []
+       }
+       this.handleChange = this.handleChange.bind(this);
+   }
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  handleChange(event) {
+      this.setState({
+        key: event.target.value,
+      });
+    };
+
+  fetchData() {
+    fetch("http://localhost:4000/api/Shared/GetCities")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({ cities: result });
+            },
+            (error) => {
+              console.log(error)
+            }
+          )
   };
 
-  return (
-    <div className="DropDown">
-      <FormControl className="FormControl">
-        <InputLabel className="DropDownLabel" htmlFor="age-native-simple">Şehir</InputLabel>
-        <Select
-          native
-          value={state.age}
-          onChange={handleChange}
-          inputProps={{
-            name: 'age',
-            id: 'age-native-simple',
-          }}
-        >
-          <option aria-label="None" value="" />
-          <option value={10}>Ankara</option>
-          <option value={20}>İstanbul</option>
-          <option value={30}>İzmir</option>
-        </Select>
-      </FormControl>
-    </div>
-  );
+  render() {
+    return (
+        <div className="DropDown">
+          <FormControl className="FormControl">
+            <InputLabel className="DropDownLabel" htmlFor="age-native-simple">Şehir</InputLabel>
+            <Select
+              native
+              onChange={this.handleChange}
+            >
+              <option aria-label="None" value="" />
+            {this.state.cities.map((city) => <option value={city._id}>{city.name}</option>)}
+            </Select>
+          </FormControl>
+        </div>
+      );
+  }
 }
 
-function ProfessionSelect() {
- const [state, setState] = React.useState({
-   age: '',
-   name: 'hai',
- });
+class ProfessionSelect extends React.Component {
+  constructor(props) {
+       super(props);
+       this.state = {
+           keys: '',
+           professions: []
+       }
+       this.handleChange = this.handleChange.bind(this);
+   }
 
- const handleChange = (event) => {
-   const name = event.target.name;
-   setState({
-     ...state,
-     [name]: event.target.value,
-   });
- };
+  componentDidMount() {
+    this.fetchData();
+  }
 
- return (
-   <div className="DropDown">
-     <FormControl className="FormControl">
-       <InputLabel htmlFor="age-native-simple">Meslek</InputLabel>
-       <Select
-         native
-         value={state.age}
-         onChange={handleChange}
-         inputProps={{
-           name: 'age',
-           id: 'age-native-simple',
-         }}
-       >
-         <option aria-label="None" value="" />
-         <option value={10}>Doktor</option>
-         <option value={20}>Avukat</option>
-         <option value={30}>Mühendis</option>
-       </Select>
-     </FormControl>
-   </div>
- );
+  handleChange(event) {
+      this.setState({
+        key: event.target.value,
+      });
+    };
+
+  fetchData() {
+    fetch("http://localhost:4000/api/Shared/GetProfessions")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              this.setState({ professions: result });
+            },
+            (error) => {
+              console.log(error)
+            }
+          )
+  };
+
+  render() {
+    return (
+        <div className="DropDown">
+          <FormControl className="FormControl">
+            <InputLabel className="DropDownLabel" htmlFor="age-native-simple">Meslek</InputLabel>
+            <Select
+              native
+              onChange={this.handleChange}
+            >
+              <option aria-label="None" value="" />
+            {this.state.professions.map((profession) => <option value={profession._id}>{profession.name}</option>)}
+            </Select>
+          </FormControl>
+        </div>
+      );
+  }
 }
+
 
 export {
   CitySelect,

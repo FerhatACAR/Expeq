@@ -7,6 +7,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 
 import testRoutes from './routes/test.routes';
+import sharedRoutes from './routes/shared.routes';
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
@@ -24,5 +25,6 @@ app.use(cors())
 app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
 
 app.use('/', testRoutes);
+app.use('/', sharedRoutes);
 
 export default app
