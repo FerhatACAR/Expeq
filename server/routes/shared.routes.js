@@ -9,11 +9,8 @@ router.route('/api/Shared/GetCities')
 router.route('/api/Shared/GetProfessions')
   .get(sharedCtrl.professionsGet)
 
-/*router.route('/api/Test/PutNames/')
-  .put(testCtrl.testPut)
-
-router.route('/api/Test/DeleteNames/')
-  .delete(testCtrl.testDelete)*/
+router.route('/api/Shared/getUsersBySelected')
+  .get(sharedCtrl.getUsersBySelected)
 
 
 export default router

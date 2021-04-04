@@ -8,35 +8,35 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 
 class CitySelect extends React.Component {
   constructor(props) {
-       super(props);
-       this.state = {
-           keys: '',
-           cities: []
-       }
-       this.handleChange = this.handleChange.bind(this);
-   }
+    super(props);
+    this.state = {
+      cities: []
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
   componentDidMount() {
     this.fetchData();
   }
 
   handleChange(event) {
-      this.setState({
-        key: event.target.value,
-      });
-    };
+    this.props.parentCallback(event.target.value, '1');
+    event.preventDefault();
+  };
 
   fetchData() {
     fetch("http://localhost:4000/api/Shared/GetCities")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({ cities: result });
-            },
-            (error) => {
-              console.log(error)
-            }
-          )
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            cities: result
+          });
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
   };
 
   render() {
@@ -59,36 +59,36 @@ class CitySelect extends React.Component {
 
 class ProfessionSelect extends React.Component {
   constructor(props) {
-       super(props);
-       this.state = {
-           keys: '',
-           professions: []
-       }
-       this.handleChange = this.handleChange.bind(this);
-   }
-
-  componentDidMount() {
-    this.fetchData();
+  super(props);
+  this.state = {
+    professions: []
   }
+  this.handleChange = this.handleChange.bind(this);
+}
 
-  handleChange(event) {
-      this.setState({
-        key: event.target.value,
-      });
-    };
+componentDidMount() {
+  this.fetchData();
+}
 
-  fetchData() {
-    fetch("http://localhost:4000/api/Shared/GetProfessions")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              this.setState({ professions: result });
-            },
-            (error) => {
-              console.log(error)
-            }
-          )
-  };
+handleChange(event) {
+  this.props.parentCallback(event.target.value, '0');
+  event.preventDefault();
+};
+
+fetchData() {
+  fetch("http://localhost:4000/api/Shared/GetProfessions")
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          professions: result
+        });
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+};
 
   render() {
     return (
