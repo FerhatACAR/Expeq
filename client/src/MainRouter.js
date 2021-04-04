@@ -15,7 +15,7 @@ const MainRouter = () => {
       <Switch>
         <Route exact path="/" component={MainPage}/>
         <Route path="/LoginPage" component={LoginPage}/>
-        <Route path="/SearchResult" component={SearchResult}/>
+        <Route path="/SearchResult/:rfCity/:rfProfession" component={SearchResult}/>
         <Route path="/SignUp" component={SignUp}/>
         <Route path="/UserProfile" component={UserProfile}/>
         {/*<PrivateRoute path="/user/edit/:userId" component={EditProfile}/>*/}
