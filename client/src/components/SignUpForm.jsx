@@ -13,73 +13,66 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from './../assets/images/pexels-andrea-piacquadio-3865577.jpg';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
+const axios = require('axios');
 
 
+export default class SignInSide extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        isSuccesful: '0'
+      }
+      this.signUpHandler = this.signUpHandler.bind(this);
+    }
 
-}));
+    componentDidMount() {
 
-export default function SignInSide() {
-  const classes = useStyles();
+    }
 
-  return (
-    <Grid container component="main" className="LoginForm">
-      <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className="Image" />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <div className="Paper">
-          <Avatar className="Avatar">
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Kayıt Ol
-          </Typography>
-          <form className="Form" noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="İsim"
-            name="name"
-            autoComplete="isim"
-            autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="surname"
-            label="Soyad"
-            name="surname"
-            autoComplete="soyad"
-            autoFocus
-          />
+    signUpHandler(e) {
+      e.preventDefault();
+      let result;
+      let params = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value,
+        name: document.getElementById("name").value,
+        surname: document.getElementById("surname").value
+      };
+
+      axios.post(
+        'http://localhost:4000/api/User/UserSignUp', {
+          params: params
+        }
+      ).then((response) => {
+        console.log(response)
+      }).catch((error) => {
+        console.log(error);
+      });
+    };
+
+  render() {
+    return (
+      <Grid container component="main" className="LoginForm">
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className="Image" />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <div className="Paper">
+            <Avatar className="Avatar">
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Kayıt Ol
+            </Typography>
+            <form className="Form" noValidate>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Adresi"
-              name="email"
-              autoComplete="email"
+              id="name"
+              label="İsim"
+              name="name"
+              autoComplete="isim"
               autoFocus
             />
             <TextField
@@ -87,51 +80,70 @@ export default function SignInSide() {
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Parola"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              id="surname"
+              label="Soyad"
+              name="surname"
+              autoComplete="soyad"
+              autoFocus
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="repassword"
-              label="Parola Tekrar"
-              type="repassword"
-              id="repassword"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Bilgileri Hatırla"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className="SubmitButton"
-            >
-              Oturum Aç
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Şifremi Unuttum
-                </Link>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Adresi"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Parola"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="repassword"
+                label="Parola Tekrar"
+                type="repassword"
+                id="repassword"
+                autoComplete="current-password"
+              />
+              <Link to={"/"}>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className="SubmitButton"
+                  onClick = {this.signUpHandler}
+                >
+                  Oturum Aç
+                </Button>
+              </Link>
+              <Grid container>
+                <Grid item xs>
+                </Grid>
+                <Grid item>
+                  <Link to={"/LoginPage"} variant="body2">
+                    {"Zaten Kayıtlı mısınız? Giriş Yapın."}
+                  </Link>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Link to={"/LoginPage"} variant="body2">
-                  {"Zaten Kayıtlı mısınız? Giriş Yapın."}
-                </Link>
-              </Grid>
-            </Grid>
-          </form>
-        </div>
+            </form>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
-  );
+    );
+  }
 }

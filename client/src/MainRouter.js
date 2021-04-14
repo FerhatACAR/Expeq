@@ -5,19 +5,20 @@ import LoginPage from './views/LoginPage'
 import SearchResult from './views/SearchResult'
 import SignUp from './views/SignUp'
 import UserProfile from './views/UserProfile'
+import Comments from './views/Comments'
 //import EditProfile from './user/EditProfile'
 //import PrivateRoute from './auth/PrivateRoute'
 import Menu from './components/Menu'
 
 const MainRouter = () => {
     return (<div>
-      <Menu/>
+      {/*<Menu/>*/}
       <Switch>
-        <Route exact path="/" component={MainPage}/>
+        <Route exact path="/" component={Comments/*MainPage*/}/>
         <Route path="/LoginPage" component={LoginPage}/>
         <Route path="/SearchResult/:rfCity/:rfProfession" component={SearchResult}/>
         <Route path="/SignUp" component={SignUp}/>
-        <Route path="/UserProfile" component={UserProfile}/>
+        <Route path="/UserProfile/:userId" component={UserProfile}/>
         {/*<PrivateRoute path="/user/edit/:userId" component={EditProfile}/>*/}
       </Switch>
     </div>)

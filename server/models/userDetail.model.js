@@ -7,7 +7,7 @@ var UserDetailSchema = new mongoose.Schema({
   website: String,
   bio: String,
   degree: String,
-  rfProfession: String,
+  rfProfession: mongoose.Schema.Types.ObjectId,
   userType: String
 })
 

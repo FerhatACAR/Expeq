@@ -9,6 +9,7 @@ import Box from '@material-ui/core/Box';
 import Summary from './Summary.jsx';
 import Bio from './Bio.jsx';
 import Contact from './Contact.jsx';
+import Comments from './../views/Comments.jsx';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,7 +44,7 @@ function a11yProps(index) {
   };
 }
 
-export default function UserTabs() {
+export default function UserTabs(props) {
   const [value, setValue] = React.useState('one');
 
   const handleChange = (event, newValue) => {
@@ -57,16 +58,20 @@ export default function UserTabs() {
           <Tab value="one" label="Özet" {...a11yProps('one')}/>
           <Tab value="two" label="Özgeçmiş" {...a11yProps('two')} />
           <Tab value="three" label="İletişim" {...a11yProps('three')} />
+          <Tab value="four" label="Yorumlar" {...a11yProps('four')} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index="one">
-        <Summary/>
+        <Summary userInfo={props.userInfo}/>
       </TabPanel>
       <TabPanel value={value} index="two">
-        <Bio/>
+        <Bio userInfo={props.userInfo}/>
       </TabPanel>
       <TabPanel value={value} index="three">
-        <Contact/>
+        <Contact userInfo={props.userInfo}/>
+      </TabPanel>
+      <TabPanel value={value} index="four">
+        <Comments userInfo={props.userInfo}/>
       </TabPanel>
     </div>
   );
