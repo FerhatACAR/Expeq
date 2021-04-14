@@ -18,7 +18,7 @@ class ListUserCard extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.prop.user);
+
   }
 
   render() {
@@ -35,13 +35,13 @@ class ListUserCard extends React.Component {
               <div className="Details">
                 <CardContent className="Content">
                   <Typography component="h5" variant="h5" className="Name">
-                    Mac Miller
+                    {this.props.user.user[0].name} {this.props.user.user[0].surname}
                   </Typography>
                   <p className="Profession">
-                    Bilgisayar Mühendisi
+                    {this.props.user.profession[0].name}
                   </p>
                   <p className="Degree">
-                    Ekip Lideri
+                    {this.props.user.degree}
                   </p>
                 </CardContent>
               </div>
@@ -52,7 +52,7 @@ class ListUserCard extends React.Component {
                   <Grid container>
                     <Grid item xs={4}></Grid>
                     <Grid item xs={8}>
-                      <Link to={"/UserProfile"}><Button
+                      <Link to={`/UserProfile/${this.props.user.user[0]._id}`}><Button
                         variant="contained"
                         className="Buttons CallButton"
                         endIcon={<VisibilityIcon className="Icon" />}
@@ -61,7 +61,7 @@ class ListUserCard extends React.Component {
                        </Button>
                       </Link>
                     </Grid>
-                    <Grid item xs={12}><p>Sakarya Üniversitesi Esentepe Kampüsü Kemalpaşa Mahallesi Üniversite Caddesi 54050 Serdivan / SAKARYA</p></Grid>
+                    <Grid item xs={12}><p>{this.props.user.adress}</p></Grid>
                   </Grid>
                 </CardContent>
               </div>
@@ -73,11 +73,7 @@ class ListUserCard extends React.Component {
             <Grid item xs={12}>
               <div className="Details">
                 <CardContent className="Content">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-                    Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
-                  </p>
+                  <p>{this.props.user.summary}</p>
                 </CardContent>
               </div>
             </Grid>
@@ -89,9 +85,14 @@ class ListUserCard extends React.Component {
 }
 
 class SquareUserCard extends React.Component {
-  constructor(props) {
-  super(props);
-}
+    constructor(props) {
+      super(props);
+    }
+
+    componentDidMount() {
+      
+    }
+
   render() {
     return (
       <Card className="SquareUserCard">
@@ -106,7 +107,7 @@ class SquareUserCard extends React.Component {
               <Grid container spacing={3}>
                 <Grid item xs={6}>
                   <Typography component="h5" variant="h5" className="Name">
-                    Mac Miller
+                    {this.props.userInfo[0].name} {this.props.userInfo[0].surname}
                   </Typography>
                 </Grid>
               </Grid>
@@ -115,21 +116,19 @@ class SquareUserCard extends React.Component {
               <Grid container spacing={3}>
                 <Grid item xs={6}>
                   <p className="Profession" style={{ marginRight: 10 }}>
-                    Bilgisayar Mühendisi
+                    {this.props.userInfo[0].userDetail[0].profession}
                   </p>
                 </Grid>
                 <Grid item xs={6}>
                   <p className="Degree">
-                    Ekip Lideri
+                    {this.props.userInfo[0].userDetail[0].degree}
                   </p>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body2" color="textSecondary" component="p">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-                Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
+                {this.props.userInfo[0].userDetail[0].summary}
               </Typography>
             </Grid>
           </Grid>

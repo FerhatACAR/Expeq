@@ -10,14 +10,13 @@ export default class SearchResult extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        users: [],
-        isLoaded: '0'
+        users: []
       }
       this.fetchData = this.fetchData.bind(this);
     }
 
     componentDidMount() {
-      this.fetchData();
+      this.fetchData(this);
     }
 
     fetchData() {
@@ -31,10 +30,11 @@ export default class SearchResult extends React.Component {
         'http://localhost:4000/api/Shared/getUsersBySelected', {
           params: params
         }
-      ).then(function(response) {
-        console.log(response.data)
-        this.setState({ users: response.data, isLoaded: '1' });
-      }).catch(function(error) {
+      ).then((response) => {
+        this.setState({
+          users: response.data
+        })
+      }).catch((error) => {
         console.log(error);
       });
     };

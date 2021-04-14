@@ -2,6 +2,9 @@ import City from '../models/city.model'
 import Profession from '../models/profession.model'
 import User from '../models/user.model'
 import UserDetail from '../models/userDetail.model'
+import mongoose from 'mongoose';
+
+const ObjectId = mongoose.Types.ObjectId;
 
 const citiesGet = async (req, res) => {
   try {
@@ -28,10 +31,9 @@ const professionsGet = async (req, res) => {
 const getUsersBySelected = async (req, res) => {
   try {
     let query = {
-      rfCity: req.query.rfCity,
-      rfProfession: req.query.rfProfession
+      rfCity: ObjectId(req.query.rfCity),
+      rfProfession: ObjectId(req.query.rfProfession)
     }
-    
     let result = await UserDetail.aggregate([{
         $match: query
       },
@@ -42,11 +44,18 @@ const getUsersBySelected = async (req, res) => {
           foreignField: 'rfUserDetail',
           as: 'user',
         }
+      },
+      {
+        $lookup: {
+          from: 'professions',
+          localField: 'rfProfession',
+          foreignField: '_id',
+          as: 'profession',
+        }
       }
     ]);
 
     res.json(result)
-    console.log(result);
   } catch (err) {
     return res.status(400).json({
       error: err
