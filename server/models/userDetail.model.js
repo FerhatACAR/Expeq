@@ -8,6 +8,7 @@ var UserDetailSchema = new mongoose.Schema({
   bio: String,
   degree: String,
   rfProfession: mongoose.Schema.Types.ObjectId,
+  rfCity: mongoose.Schema.Types.ObjectId,
   userType: String
 })
 

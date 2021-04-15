@@ -31,11 +31,11 @@ class Comment extends React.Component {
             title="Live from space album cover"
           />
           <Grid container spacing={3}>
-            <Grid item xs={2} className="PhotoArea">
+            <Grid item xs={3} className="PhotoArea">
               <div className="Details">
                 <CardContent className="Content">
                   <Typography component="h5" variant="h5" className="Name">
-                    Ferhat ACAR
+                    {this.props.comment.user[0].name} {this.props.comment.user[0].surname}
                   </Typography>
                   <p className="Profession">
                     asdasdasdasd
@@ -46,14 +46,14 @@ class Comment extends React.Component {
                 </CardContent>
               </div>
             </Grid>
-            <Grid item xs={10} className="AdressArea">
+            <Grid item xs={7} className="AdressArea">
               <div className="Details">
                 <CardContent className="Content">
                   <Grid container>
                     <Grid item xs={4}></Grid>
                     <Grid item xs={8}>
                     </Grid>
-                    <Grid item xs={12}><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></Grid>
+                    <Grid item xs={12}><p>{this.props.comment.message}</p></Grid>
                   </Grid>
                 </CardContent>
               </div>
