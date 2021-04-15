@@ -11,4 +11,10 @@ router.route('/api/User/UserLogin')
 router.route('/api/User/UserSignUp/')
   .post(userCtrl.UserSignUp)
 
+router.route('/api/User/UserComment/')
+  .post(userCtrl.UserComment)
+
+router.route('/api/User/GetComments')
+  .get(userCtrl.GetComments)
+
 export default router

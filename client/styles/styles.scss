@@ -314,3 +314,25 @@ code {
 }
 
 // USER PROFILE STYLES ENDS
+
+// COMMENTS STYLES STARTS
+
+.Comments {
+  @include Button();
+  & .CommentEnter .Buttons {
+    top: 90%;
+  }
+  & .CommentList {
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  & .CommentTextArea {
+    width: 100%;
+    height: 100px;
+  }
+}
+
+
+// COMMENTS STYLES END
