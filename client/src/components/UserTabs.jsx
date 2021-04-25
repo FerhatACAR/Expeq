@@ -10,6 +10,7 @@ import Summary from './Summary.jsx';
 import Bio from './Bio.jsx';
 import Contact from './Contact.jsx';
 import Comments from './../views/Comments.jsx';
+import Chat from './../views/Chat.jsx';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -59,6 +60,7 @@ export default function UserTabs(props) {
           <Tab value="two" label="Özgeçmiş" {...a11yProps('two')} />
           <Tab value="three" label="İletişim" {...a11yProps('three')} />
           <Tab value="four" label="Yorumlar" {...a11yProps('four')} />
+          <Tab value="five" label="Mesajlaşma" {...a11yProps('five')} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index="one">
@@ -72,6 +74,9 @@ export default function UserTabs(props) {
       </TabPanel>
       <TabPanel value={value} index="four">
         <Comments userInfo={props.userInfo}/>
+      </TabPanel>
+      <TabPanel value={value} index="five">
+        <Chat userInfo={props.userInfo}/>
       </TabPanel>
     </div>
   );

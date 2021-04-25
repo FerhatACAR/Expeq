@@ -5,8 +5,6 @@ import LoginPage from './views/LoginPage'
 import SearchResult from './views/SearchResult'
 import SignUp from './views/SignUp'
 import UserProfile from './views/UserProfile'
-//import EditProfile from './user/EditProfile'
-//import PrivateRoute from './auth/PrivateRoute'
 import Menu from './components/Menu'
 
 const MainRouter = () => {
@@ -18,7 +16,6 @@ const MainRouter = () => {
         <Route path="/SearchResult/:rfCity/:rfProfession" component={SearchResult}/>
         <Route path="/SignUp" component={SignUp}/>
         <Route path="/UserProfile/:userId" component={UserProfile}/>
-        {/*<PrivateRoute path="/user/edit/:userId" component={EditProfile}/>*/}
       </Switch>
     </div>)
 }
