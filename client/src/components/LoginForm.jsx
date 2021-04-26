@@ -42,10 +42,13 @@ export default class SignInSide extends React.Component {
         }
       ).then((response) => {
         if (response.data.length > 0) {
+          window.sessionStorage.setItem('USER_LOGGED', true);
           window.sessionStorage.setItem('USER_ID', response.data[0]._id.toString());
+          window.sessionStorage.setItem('USER_NAME', response.data[0].name.toString() + " " + response.data[0].surname.toString());
           this.setState({isSuccesful: '1'})
         }else {
           this.setState({isSuccesful: '0'})
+          window.sessionStorage.setItem('USER_LOGGED', false);
         }
       }).catch((error) => {
         console.log(error);
