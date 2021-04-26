@@ -3,7 +3,7 @@ import React from "react"
 const ChatOnline = ({ online }) => {
   return (
     <div className='chat-online'>
-      <span>Online: {online}</span>
+      <span>Çevrimiçi: {online}</span>
     </div>
   )
 }

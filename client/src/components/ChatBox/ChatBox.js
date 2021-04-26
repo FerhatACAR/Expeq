@@ -1,6 +1,6 @@
 import React from 'react';
 import { socket } from './../../views/Chat'
-import Header from './Header/Header'
+//import Header from './Header/Header'
 import ChatOnline from "./ChatOnline/ChatOnline";
 import ChatContent from './ChatContent/ChatContent'
 import ChatInput from "./ChatInput/ChatInput"
@@ -34,13 +34,13 @@ const ChatBox = ({ user }) => {
 
     socket.on('user:connected', ({ username, online }) => {
       setOnline(online)
-      setMessages(messages => ([...messages, { message: `${username} joined!`, username, date: null }]))
+      setMessages(messages => ([...messages, { message: `${username} katıldı!`, username, date: null }]))
       scrollChatToBottom(chatContentElement)
     })
 
     socket.on('user:disConnected', ({ username, online }) => {
       setOnline(online)
-      setMessages(messages => ([...messages, { message: `${username} left!`, username, date: null }]))
+      setMessages(messages => ([...messages, { message: `${username} ayrıldı!`, username, date: null }]))
       scrollChatToBottom(chatContentElement)
     })
   }, [setMessages, setOnline]);
