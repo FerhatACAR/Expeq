@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 var UserDetailSchema = new mongoose.Schema({
-  adress: String,
+  address: String,
   phone: String,
   summary: String,
   website: String,

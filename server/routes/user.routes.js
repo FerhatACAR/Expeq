@@ -17,4 +17,7 @@ router.route('/api/User/UserComment/')
 router.route('/api/User/GetComments')
   .get(userCtrl.GetComments)
 
+router.route('/api/User/EditUserDetail')
+    .post(userCtrl.EditUserDetail)
+
 export default router

@@ -165,6 +165,15 @@ export default function MenuBar() {
                 endIcon={<AccountCircle className="Icon" />}
               >
                 Kayıt Ol
+                </Button>
+            </Link>
+            <Link to={"/UserProfileEdit"}>
+              <Button
+                variant="contained"
+                className="Buttons"
+                endIcon={<AccountCircle className="Icon" />}
+              >
+                Profil
            </Button>
             </Link>
           </div>
