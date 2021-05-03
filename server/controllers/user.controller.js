@@ -1,5 +1,6 @@
 import User from '../models/user.model'
 import Comments from '../models/comments.model'
+import UserDetail from '../models/userDetail.model'
 import mongoose from 'mongoose';
 
 const ObjectId = mongoose.Types.ObjectId;
@@ -39,9 +40,8 @@ const UserLogin = async (req, res) => {
     }
 
     let result = await User.aggregate([{
-        $match: query
-      }
-    ]);
+      $match: query
+    }]);
 
     res.json(result)
   } catch (err) {
@@ -52,18 +52,18 @@ const UserLogin = async (req, res) => {
 }
 
 const UserSignUp = async (req, res) => {
-    const user = new User(req.body.params)
+  const user = new User(req.body.params)
 
-    try {
-        await user.save()
-        return res.status(200).json({
-            message: "Kayıt Başarılı!"
-        })
-    } catch (err) {
-        return res.status(400).json({
-            error: err
-        })
-    }
+  try {
+    await user.save()
+    return res.status(200).json({
+      message: "Kayıt Başarılı!"
+    })
+  } catch (err) {
+    return res.status(400).json({
+      error: err
+    })
+  }
 }
 
 
@@ -78,7 +78,7 @@ const UserComment = async (req, res) => {
   try {
     await comments.save()
     return res.status(200).json({
-        message: "Kayıt Başarılı!"
+      message: "Kayıt Başarılı!"
     })
   } catch (err) {
     return res.status(400).json({
@@ -116,12 +116,38 @@ const GetComments = async (req, res) => {
   }
 }
 
+const EditUserDetail = async (req, res) => {
+  let query = {
+    degree: req.body.params.degree,
+    phone: req.body.params.phone,
+    website: req.body.params.website,
+    address: req.body.params.address,
+    summary: req.body.params.summary,
+    bio: req.body.params.bio,
+    education: req.body.params.education,
+    _id: ObjectId(req.body.params._id),
+    rfProfession: ObjectId(req.body.params.rfProfession),
+    rfCity: ObjectId(req.body.params.rfCity),
+    userType: '1'
+  }
+
+  try {
+    let result = await UserDetail.updateOne({_id: query._id}, query, {
+      upsert: true
+    })
+    res.json(result)
+  } catch (err) {
+    return res.status(400).json({
+      error: err
+    })
+  }
+}
+
 export default {
   GetUserById,
   UserLogin,
   UserSignUp,
   UserComment,
-  GetComments
-  // testPut,
-  // testDelete
+  GetComments,
+  EditUserDetail
 }
