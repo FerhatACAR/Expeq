@@ -23,14 +23,16 @@ export default class ProfileSettings extends React.Component {
       this.state = {
         isSuccesful: '0',
         selectedRfCity: '',
-        selectedRfProfession: ''
+        selectedRfProfession: '',
+        rfUserDetail: ''
       }
-      this.signUpHandler = this.signUpHandler.bind(this);
+      this.postUserDetailsHandler = this.postUserDetailsHandler.bind(this);
       this.handleCallback = this.handleCallback.bind(this);
+      this.fetchUserData = this.fetchUserData.bind(this);
     }
 
     componentDidMount() {
-
+      this.fetchUserData();
     }
 
     handleCallback(selectedData, type) {
@@ -45,7 +47,26 @@ export default class ProfileSettings extends React.Component {
       }
     };
 
-    signUpHandler(e) {
+    fetchUserData() {
+      let result;
+      let params = {
+        userId: '60578a18f76ed1d6c1395ef3'
+      };
+
+      axios.get(
+        'http://localhost:4000/api/User/GetUserById', {
+          params: params
+        }
+      ).then((response) => {
+        this.setState({
+          rfUserDetail: response.data[0].rfUserDetail
+        });
+      }).catch((error) => {
+        console.log(error);
+      });
+    };
+
+    postUserDetailsHandler(e) {
       e.preventDefault();
       let result;
       let params = {
@@ -56,11 +77,11 @@ export default class ProfileSettings extends React.Component {
         summary: document.getElementById("summary").value,
         bio: document.getElementById("bio").value,
         education: document.getElementById("education").value,
-        _id:'60578c12f76ed1d6c1395ef9', //window.sessionStorage.getItem("USER_ID")
+        _id: this.state.rfUserDetail,
         rfProfession: this.state.selectedRfProfession,
         rfCity: this.state.selectedRfCity
       };
-      console.log(params)
+
       axios.post(
         'http://localhost:4000/api/User/EditUserDetail', {
           params: params
@@ -181,7 +202,7 @@ export default class ProfileSettings extends React.Component {
                 variant="contained"
                 color="primary"
                 className="SubmitButton"
-                onClick = {this.signUpHandler}
+                onClick = {this.postUserDetailsHandler}
               >
                 Kaydet
               </Button>

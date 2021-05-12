@@ -78,7 +78,6 @@ export default function MenuBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -149,33 +148,41 @@ export default function MenuBar() {
           </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Link to={"/LoginPage"}>
-              <Button
-                variant="contained"
-                className="Buttons"
-                endIcon={<AccountCircle className="Icon" />}
-              >
-                Giriş Yap
-           </Button>
-            </Link>
-            <Link to={"/SignUp"}>
-              <Button
-                variant="contained"
-                className="Buttons"
-                endIcon={<AccountCircle className="Icon" />}
-              >
-                Kayıt Ol
-                </Button>
-            </Link>
-            <Link to={"/UserProfileEdit"}>
-              <Button
-                variant="contained"
-                className="Buttons"
-                endIcon={<AccountCircle className="Icon" />}
-              >
-                Profil
-           </Button>
-            </Link>
+            {((window.sessionStorage.getItem("USER_LOGGED") == false)
+              || (window.sessionStorage.getItem("USER_LOGGED") == null))?
+              <Link to={"/LoginPage"}>
+                <Button
+                  variant="contained"
+                  className="Buttons"
+                  endIcon={<AccountCircle className="Icon" />}
+                >
+                  Giriş Yap
+             </Button>
+              </Link>: null
+            }
+            {((window.sessionStorage.getItem("USER_LOGGED") == false)
+              || (window.sessionStorage.getItem("USER_LOGGED") == null))?
+              <Link to={"/SignUp"}>
+                <Button
+                  variant="contained"
+                  className="Buttons"
+                  endIcon={<AccountCircle className="Icon" />}
+                >
+                  Kayıt Ol
+                  </Button>
+              </Link>: null
+            }
+            {(window.sessionStorage.getItem("USER_TYPE") == '1')?
+              <Link to={"/UserProfileEdit"}>
+                <Button
+                  variant="contained"
+                  className="Buttons"
+                  endIcon={<AccountCircle className="Icon" />}
+                >
+                  Profil
+             </Button>
+              </Link> : null
+            }
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
