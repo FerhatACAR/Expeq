@@ -89,8 +89,6 @@ const UserComment = async (req, res) => {
 
 const GetComments = async (req, res) => {
   try {
-    console.log("asdasdas asdasd")
-    console.log(req.query)
     let query = {
       rfCommentedUser: ObjectId(req.query.commentedUserId)
     }
