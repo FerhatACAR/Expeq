@@ -49,7 +49,7 @@ class CitySelect extends React.Component {
               onChange={this.handleChange}
             >
               <option aria-label="None" value="" />
-            {this.state.cities.map((city) => <option value={city._id}>{city.name}</option>)}
+            {this.state.cities.map((city) => <option key={city._id} value={city._id}>{city.name}</option>)}
             </Select>
           </FormControl>
         </div>
@@ -100,7 +100,7 @@ fetchData() {
               onChange={this.handleChange}
             >
               <option aria-label="None" value="" />
-            {this.state.professions.map((profession) => <option value={profession._id}>{profession.name}</option>)}
+            {this.state.professions.map((profession) => <option key={profession._id} value={profession._id}>{profession.name}</option>)}
             </Select>
           </FormControl>
         </div>

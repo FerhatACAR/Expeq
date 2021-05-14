@@ -12,7 +12,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Link } from 'react-router-dom';
 import { Comment } from './../components/CommentCard';
-import Macmiller from './../assets/images/Mac-Miller-press-by-G-L-Askew-II-billboard-1548-compressed.jpg';
 const axios = require('axios');
 
 export default class Comments extends React.Component {

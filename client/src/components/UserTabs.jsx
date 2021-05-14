@@ -56,8 +56,8 @@ export default function UserTabs(props) {
     <div className="UserTabs">
       <AppBar position="static" className="Tab">
         <Tabs value={value} onChange={handleChange} aria-label="wrapped label tabs example">
-          <Tab value="one" label="Özet" {...a11yProps('one')}/>
-          <Tab value="two" label="Özgeçmiş" {...a11yProps('two')} />
+          <Tab value="one" label="Özgeçmiş" {...a11yProps('one')}/>
+          <Tab value="two" label="Eğitim" {...a11yProps('two')} />
           <Tab value="three" label="İletişim" {...a11yProps('three')} />
           <Tab value="four" label="Yorumlar" {...a11yProps('four')} />
           <Tab value="five" label="Mesajlaşma" {...a11yProps('five')} />

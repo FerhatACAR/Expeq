@@ -9,42 +9,11 @@ export default function Summary(props){
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography component="h5" variant="h5" className="Name">
-            Lisans
+            Eğitim
           </Typography>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-             Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
-          </p>
-          <Typography component="h5" variant="h5" className="Name">
-            Yüksek Lisans
-          </Typography>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-             Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
-          </p>
+          <p>{props.userInfo[0].userDetail[0].education}</p>
         </Grid>
         <Grid item xs={12}><Divider/></Grid>
-          <Grid item xs={12}>
-            <Typography component="h5" variant="h5" className="Name">
-              Ödüller
-            </Typography>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-               Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
-            </p>
-            <Typography component="h5" variant="h5" className="Name">
-              Sertifikalar
-            </Typography>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Sed at accumsan leo. Maecenas at leo tristique, mattis dui in, hendrerit nisl.
-               Duis at congue lacus, in imperdiet elit. Aliquam lobortis interdum neque nec tristique...
-            </p>
-          </Grid>
-          <Grid item xs={12}><Divider/></Grid>
       </Grid>
     </div>
   );

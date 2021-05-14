@@ -16,10 +16,10 @@ export default class Chat extends React.Component {
       message: ''
     }
     this.loginHandler = this.loginHandler.bind(this);
-    // this.getComments = this.getComments.bind(this);
   }
 
   componentDidMount() {
+    console.log(window.sessionStorage.getItem('USER_LOGGED'))
     this.setState({
       username: (window.sessionStorage.getItem('USER_NAME'))?window.sessionStorage.getItem('USER_NAME'):'',
       isLoggedIn: (window.sessionStorage.getItem('USER_LOGGED'))?window.sessionStorage.getItem('USER_LOGGED'):false

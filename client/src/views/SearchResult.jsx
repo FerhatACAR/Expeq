@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import {ListUserCard} from './../components/UserCard';
+import { Link } from 'react-router-dom';
 import {CitySelect, ProfessionSelect} from './../components/DropDowns';
 const axios = require('axios');
 
@@ -10,14 +11,29 @@ export default class SearchResult extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        users: []
+        users: [],
+        selectedRfCity: '',
+        selectedRfProfession: ''
       }
       this.fetchData = this.fetchData.bind(this);
+      this.handleCallback = this.handleCallback.bind(this);
     }
 
     componentDidMount() {
       this.fetchData(this);
     }
+
+    handleCallback(selectedData, type) {
+      if (type == '1') {
+        this.setState({
+          selectedRfCity: new String(selectedData)
+        })
+      } else {
+        this.setState({
+          selectedRfProfession: new String(selectedData)
+        })
+      }
+    };
 
     fetchData() {
       let result;
@@ -44,24 +60,27 @@ export default class SearchResult extends React.Component {
       <div className="SearchResult">
         <Grid container spacing={3}>
           <Grid item xs={8} className="CardList">
-          {this.state.users.map((user) => <ListUserCard user = {user} />)}
+          {this.state.users.map((user) => <ListUserCard key={user} user = {user} />)}
           </Grid>
           <Grid item xs={4} className="SideBar">
-            <Grid container spacing={0.2}>
+            <Grid container spacing={1}>
               <Grid item xs={12} className="DropDown">
-                <ProfessionSelect/>
+                <ProfessionSelect parentCallback = {this.handleCallback}/>
               </Grid>
               <Grid item xs={12} className="DropDown">
-                <CitySelect/>
+                <CitySelect parentCallback = {this.handleCallback}/>
               </Grid>
               <Grid item xs={12} className="Search">
+              <Link to={`/SearchResult/${this.state.selectedRfCity}/${this.state.selectedRfProfession}`}>
                 <Button
                  variant="contained"
                  className="Buttons SearchButton"
                  endIcon={<SearchIcon className="Icon" />}
+                 onClick = {this.handleClick}
                 >
-                 Ara
-                </Button>
+               Ara
+              </Button>
+              </Link>
               </Grid>
             </Grid>
           </Grid>

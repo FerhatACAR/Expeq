@@ -52,17 +52,28 @@ const UserLogin = async (req, res) => {
 }
 
 const UserSignUp = async (req, res) => {
-  const user = new User(req.body.params)
+  var detailId = mongoose.Types.ObjectId();
+  var userId = mongoose.Types.ObjectId();
+  const userDetail = new UserDetail({_id: detailId});
 
   try {
-    await user.save()
+    await userDetail.save();
+
+    req.body.params.rfUserDetail = detailId;
+    req.body.params._id = userId;
+    const user = new User(req.body.params)
+
+    await user.save();
     return res.status(200).json({
-      message: "Kayıt Başarılı!"
+      message: "Kayıt Başarılı!",
+      userId: userId
     })
+    await UserDetail.save();
   } catch (err) {
     return res.status(400).json({
       error: err
     })
+
   }
 }
 
