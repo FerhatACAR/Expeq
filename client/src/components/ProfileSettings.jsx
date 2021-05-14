@@ -50,7 +50,7 @@ export default class ProfileSettings extends React.Component {
     fetchUserData() {
       let result;
       let params = {
-        userId: '60578a18f76ed1d6c1395ef3'
+        userId: window.sessionStorage.getItem("USER_ID")
       };
 
       axios.get(
@@ -87,7 +87,8 @@ export default class ProfileSettings extends React.Component {
           params: params
         }
       ).then((response) => {
-        console.log(response)
+        alert("Kayıt Başarılı");
+        document.location.href="/";
       }).catch((error) => {
         console.log(error);
       });

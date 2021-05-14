@@ -10,6 +10,8 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import BrandLogo from '../assets/logo/logo-brand.png';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HttpsIcon from '@material-ui/icons/Https';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -85,6 +87,11 @@ export default function MenuBar() {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleClick = () =>{
+    window.sessionStorage.clear();
+    document.location.href="/";
+  }
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -148,20 +155,20 @@ export default function MenuBar() {
           </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {((window.sessionStorage.getItem("USER_LOGGED") == false)
-              || (window.sessionStorage.getItem("USER_LOGGED") == null))?
+            {((window.sessionStorage.getItem("USER_LOGGED") == null)
+              || (window.sessionStorage.getItem("USER_LOGGED").toString() == "false"))?
               <Link to={"/LoginPage"}>
                 <Button
                   variant="contained"
                   className="Buttons"
-                  endIcon={<AccountCircle className="Icon" />}
+                  endIcon={<HttpsIcon className="Icon" />}
                 >
                   Giriş Yap
              </Button>
               </Link>: null
             }
-            {((window.sessionStorage.getItem("USER_LOGGED") == false)
-              || (window.sessionStorage.getItem("USER_LOGGED") == null))?
+            {((window.sessionStorage.getItem("USER_LOGGED") == null)
+              || (window.sessionStorage.getItem("USER_LOGGED").toString() == "false"))?
               <Link to={"/SignUp"}>
                 <Button
                   variant="contained"
@@ -180,6 +187,19 @@ export default function MenuBar() {
                   endIcon={<AccountCircle className="Icon" />}
                 >
                   Profil
+             </Button>
+              </Link> : null
+            }
+            {((window.sessionStorage.getItem("USER_LOGGED") != null)
+              && (window.sessionStorage.getItem("USER_LOGGED").toString() == "true"))?
+              <Link to={"/UserProfileEdit"}>
+                <Button
+                  variant="contained"
+                  className="Buttons"
+                  endIcon={<ExitToAppIcon className="Icon" />}
+                  onClick = {handleClick}
+                >
+                  Çıkış Yap
              </Button>
               </Link> : null
             }

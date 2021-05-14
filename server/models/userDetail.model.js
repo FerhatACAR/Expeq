@@ -9,7 +9,8 @@ var UserDetailSchema = new mongoose.Schema({
   degree: String,
   rfProfession: mongoose.Schema.Types.ObjectId,
   rfCity: mongoose.Schema.Types.ObjectId,
-  userType: String
+  userType: String,
+  education: String
 })
 
 export default mongoose.model('UserDetail', UserDetailSchema, 'userDetail')

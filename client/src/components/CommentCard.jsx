@@ -9,25 +9,30 @@ import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Link } from 'react-router-dom'
-
-import Macmiller from './../assets/images/Mac-Miller-press-by-G-L-Askew-II-billboard-1548-compressed.jpg';
+import BoyPP from '../assets/images/boypp.jpg';
+import GirlPP from '../assets/images/girlpp.jpg';
 
 class Comment extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      gender: BoyPP
+    }
   }
 
   componentDidMount() {
-
+    if(this.props.comment.user[0].userGender == "1"){
+      this.setState({gender: GirlPP})
+    }
   }
 
   render() {
     return (
       <div className="Card">
         <Card className="FirstRow">
-          <CardMedia
+          <img
             className="Cover"
-            image={Macmiller}
+            src={"http://localhost:9001/" + this.state.gender}
             title="Live from space album cover"
           />
           <Grid container spacing={3}>
@@ -38,10 +43,10 @@ class Comment extends React.Component {
                     {this.props.comment.user[0].name} {this.props.comment.user[0].surname}
                   </Typography>
                   <p className="Profession">
-                    asdasdasdasd
+                    Bilgisayar Mühendisi
                   </p>
                   <p className="Degree">
-                    asdasdasdasdasdasdasd
+                    {this.props.comment.user[0].degree}
                   </p>
                 </CardContent>
               </div>

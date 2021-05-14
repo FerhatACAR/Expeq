@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-
 import MainImage from '../assets/images/notebook-1280538_1920.jpg';
 import { CitySelect, ProfessionSelect } from './DropDowns'
 

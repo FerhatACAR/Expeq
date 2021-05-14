@@ -219,6 +219,7 @@ code {
 .SquareUserCard {
   & .Cover {
     height: 20%;// resim için ayarlama yapılacak
+    width: 50%;
   }
   & .CardActions {
     @include Button();
@@ -234,6 +235,7 @@ code {
   padding-right: 20px;
   & .SideBar {
     display: flex;
+    margin-top: 110px;
     flex-direction: column;
     & .Search {
       @include Button();

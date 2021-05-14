@@ -9,26 +9,30 @@ import Button from '@material-ui/core/Button';
 import SendIcon from '@material-ui/icons/Send';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { Link } from 'react-router-dom'
-
-import Macmiller from './../assets/images/Mac-Miller-press-by-G-L-Askew-II-billboard-1548-compressed.jpg';
+import BoyPP from '../assets/images/boypp.jpg';
+import GirlPP from '../assets/images/girlpp.jpg';
 
 class ListUserCard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      gender: BoyPP
+    }
   }
 
   componentDidMount() {
-
+    if(this.props.user.user[0].userGender == "1"){
+      this.setState({gender: GirlPP})
+    }
   }
 
   render() {
     return (
       <div className="Card">
         <Card className="FirstRow">
-          <CardMedia
+          <img
             className="Cover"
-            image={Macmiller}
-            title="Live from space album cover"
+            src={"http://localhost:9001/" + this.state.gender}
           />
           <Grid container spacing={3}>
             <Grid item xs={4} className="PhotoArea">
@@ -61,7 +65,7 @@ class ListUserCard extends React.Component {
                        </Button>
                       </Link>
                     </Grid>
-                    <Grid item xs={12}><p>{this.props.user.adress}</p></Grid>
+                    <Grid item xs={12}><p>{this.props.user.address}</p></Grid>
                   </Grid>
                 </CardContent>
               </div>
@@ -85,13 +89,19 @@ class ListUserCard extends React.Component {
 }
 
 class SquareUserCard extends React.Component {
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      gender: BoyPP
     }
+  }
 
-    componentDidMount() {
-      
+  componentDidMount() {
+    console.log(this.props);
+    if(this.props.userInfo[0].userGender == "1"){
+      this.setState({gender: GirlPP})
     }
+  }
 
   render() {
     return (
@@ -99,7 +109,7 @@ class SquareUserCard extends React.Component {
         <CardMedia
           component="img"
           className="Cover"
-          image={Macmiller}
+          image={"http://localhost:9001/" + this.state.gender}
         />
         <CardContent>
           <Grid container spacing={3}>
